@@ -1,0 +1,55 @@
+ body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: url('bg1.gif') no-repeat center center fixed;
+            background-size: cover;
+            animation: panBackground 20s infinite alternate ease-in-out;
+        }
+
+        .card {
+            background-color: #ffffff;
+            color: #1a1a1a;
+            padding: 60px; 
+            width: 400px;
+            border-radius: 40px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4), inset 0 0 10px rgba(255,255,255,0.5);
+            text-align: center;
+            /* SLOW SMOOTH TRANSITION FOR COLOR CHANGE */
+            transition: all 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        h1 { font-weight: 700; margin-bottom: 30px; letter-spacing: -0.5px; }
+
+        button {
+            background: #1a1a1a;
+            color: #ffffff;
+            border: none;
+            padding: 18px 40px;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        button:hover { background: #333; transform: scale(1.05); }
+
+        table { margin: 40px auto 0; width: 100%; border-collapse: collapse; }
+        td { padding: 12px 0; font-weight: 300; }
+        .label { font-weight: 700; width: 50%; text-align: left; }
+        .value { width: 50%; text-align: right; transition: opacity 0.2s ease; }
+
+        .animate-zoom { animation: pulseBackground 0.5s ease-out; }
+        @keyframes pulseBackground {
+            0% { background-size: 100%; }
+            50% { background-size: 105%; }
+            100% { background-size: 100%; }
+        }
+        @keyframes panBackground {
+            from { background-position: 50% 50%; }
+            to { background-position: 60% 60%; }
+        }

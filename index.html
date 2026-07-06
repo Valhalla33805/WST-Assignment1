@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WST Assignment</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="agonzales_style.css">
+</head>
+<body>
+
+    <div class="card">
+        <h1>Interactive Background</h1>
+        <button onclick="changeColor()">Click Me!</button>
+
+        <table>
+            <tr><td class="label">Color</td><td id="colorDisplay" class="value">White</td></tr>
+            <tr><td class="label">Interactions</td><td id="clickCount" class="value">0</td></tr>
+        </table>
+    </div>
+
+    <script>
+        let count = 0;
+        function changeColor() {
+            const colorData = {
+                "#ffffff": "White", "#2c3e50": "Midnight", "#34495e": "Slate", "#7f8c8d": "Steel",
+                "#8e44ad": "Deep Plum", "#2980b9": "Ocean", "#16a085": "Emerald",
+                "#27ae60": "Nephritis", "#f39c12": "Orange", "#d35400": "Pumpkin",
+                "#c0392b": "Pomegranate", "#bdc3c7": "Silver", "#9b59b6": "Amethyst",
+                "#1abc9c": "Turquoise", "#e67e22": "Carrot", "#3498db": "Peter River",
+                "#e74c3c": "Alizarin", "#f1c40f": "Sun Flower", "#ecf0f1": "Clouds"
+            };
+
+            let keys = Object.keys(colorData);
+            let randomHex = keys[Math.floor(Math.random() * keys.length)];
+            
+            // 1. Update Card Appearance
+            let card = document.querySelector('.card');
+            card.style.backgroundColor = randomHex;
+            card.style.color = (randomHex === "#ffffff" || randomHex === "#f1c40f" || randomHex === "#bdc3c7" || randomHex === "#ecf0f1") ? "#1a1a1a" : "#ffffff";
+            
+            // 2. FADE OUT/IN logic for Text
+            let display = document.getElementById("colorDisplay");
+            display.style.opacity = 0;
+            setTimeout(() => {
+                display.innerText = colorData[randomHex];
+                display.style.opacity = 1;
+            }, 200);
+
+            // 3. Trigger Zoom Animation
+            document.body.classList.remove('animate-zoom');
+            void document.body.offsetWidth; 
+            document.body.classList.add('animate-zoom');
+            
+            document.getElementById("clickCount").innerText = ++count;
+        }
+    </script>
+</body>
+</html>
